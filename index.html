@@ -3,9 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Code Input Layout</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .left-side {
+            flex: 1;
+            padding: 20px;
+            border-right: 2px solid #ccc;
+        }
+
+        .right-side {
+            flex: 1;
+            padding: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 80%;
+            resize: none;
+            font-family: monospace;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1>Debugify</h1>
+
+<div class="container">
+    <div class="left-side">
+        <h3>Enter Your Prompt</h3>
+        <textarea id="promptInput" placeholder="Type your prompt here..."></textarea>
+        <button onclick="generateCode()">Generate Code</button>
+    </div>
+
+    <div class="right-side">
+        <h3>Code Output</h3>
+        <textarea id="codeOutput" placeholder="Generated code will appear here..." readonly></textarea>
+    </div>
+</div>
+
+<script>
+    function generateCode() {
+        const prompt = document.getElementById('promptInput').value;
+        let generatedCode = "";
+
+        // This is just an example logic for code generation based on the prompt.
+        // You can modify it to suit your needs.
+        if (prompt.toLowerCase().includes("loop")) {
+            generatedCode = "for (let i = 0; i < 5; i++) {\n    console.log(i);\n}";
+        } else if (prompt.toLowerCase().includes("function")) {
+            generatedCode = "function example() {\n    console.log('Hello, World!');\n}";
+        } else {
+            generatedCode = "// No code generated based on the prompt.";
+        }
+
+        document.getElementById('codeOutput').value = generatedCode;
+    }
+</script>
+
 </body>
 </html>
